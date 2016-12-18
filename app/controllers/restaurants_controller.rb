@@ -10,7 +10,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
-    @reviews = Review.where(restaurant_id: @restaurant.id)
+    @reviews = Review.where(restaurant_id: @restaurant.id).order('created_at DESC')
+    @reviews_avg = @reviews.average(:rating)
   end
 
   # GET /restaurants/new

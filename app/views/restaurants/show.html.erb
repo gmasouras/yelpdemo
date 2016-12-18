@@ -5,6 +5,8 @@
       <strong>Name:</strong>
       <%= @restaurant.name %>
     </p>
+    <h4>The average rating is <%= @reviews_avg %> </h4>
+    <p><%= @reviews.length %> reviews</p>
     <p>
       <strong>Address:</strong>
       <%= @restaurant.address %>
@@ -24,10 +26,16 @@
     <% if @reviews.empty? %>
       <h3>No reviews yet. Be the first one to write one!</h3>
     <% else %>
-      <% @reviews.each do |review| %>
-        <h1 class="star-color"><%= '*'*review.rating %></h1>
-        <p><%= review.comment %></p>
-      <% end %>
+      <table class="table">
+        <% @reviews.each do |review| %>
+        <tr>
+          <td>
+            <h1 class="star-color"><%= '*'*review.rating %></h1>
+            <p><%= review.comment %></p>
+          </td>  
+        </tr>
+        <% end %>
+      </table>
     <% end %>
   </div>
 </div>
